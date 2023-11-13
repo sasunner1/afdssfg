@@ -18,7 +18,8 @@ def capture_and_send_screenshot():
 
         # Save the screenshot in PNG format
         screenshot_path = '/latest-screenshot/vm_screenshot.png'
-        screenshot.save(screenshot_path, format='PNG')
+        with open(screenshot_path, 'wb') as f:
+            screenshot.save(f, format='PNG')
 
         # Send the screenshot path and request click position from the Replit server
         files = {'file': ('screenshot_path.txt', open(screenshot_path, 'rb'))}
@@ -43,7 +44,7 @@ def capture_and_send_screenshot():
         print("Error:", str(e))
 
 if __name__ == '__main__':
-    # Capture and send a screenshot with click event every 5 seconds (adjust as needed)
+    # Capture and send a screenshot with a click event every 5 seconds (adjust as needed)
     while True:
         capture_and_send_screenshot()
         time.sleep(5)
