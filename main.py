@@ -1,4 +1,3 @@
-import pyautogui
 import requests
 import time
 
@@ -9,14 +8,10 @@ def capture_and_send_screenshot():
     try:
         global server_url
 
-        # Capture screenshot using pyautogui
-        screenshot = pyautogui.screenshot()
-
-        # Save the screenshot on the server
+        # Sample screenshot path (replace this with your logic to capture a screenshot)
         screenshot_path = 'path/to/your/server/screenshotted/vm_screenshot.png'
-        screenshot.save(screenshot_path)
 
-        # Send the screenshot path and request click position from the Replit server
+        # Send the screenshot path to the Replit server
         files = {'file': ('screenshot_path.txt', screenshot_path)}
         response = requests.post(server_url, files=files)
 
@@ -31,9 +26,8 @@ def capture_and_send_screenshot():
         click_position = click_response.json().get("click_position")
 
         if click_position:
-            # Perform a click event at the specified position
+            # Perform a click event at the specified position (replace with your logic)
             click_position = eval(click_position)  # Convert string to tuple
-            pyautogui.click(click_position)
             print(f"Clicked at position: {click_position}")
 
     except Exception as e:
