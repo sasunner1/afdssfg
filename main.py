@@ -1,4 +1,4 @@
-import pygetwindow as gw
+import mss
 import requests
 import time
 
@@ -9,18 +9,12 @@ def capture_and_send_screenshot():
     try:
         global server_url
 
-        # Get the active window
-        window = gw.getWindowsWithTitle("")[0]
-
-        # Capture screenshot using pygetwindow
-        screenshot = window.screenshot()
-
-        # Save the screenshot in PNG format
-        screenshot_path = '/latest-screenshot/vm_screenshot.png'
-        screenshot.save(screenshot_path, format='PNG')
+        # Capture screenshot using mss
+        with mss.mss() as sct:
+            screenshot = sct.shot(output='/latest-screenshot/vm_screenshot.png')
 
         # Send the screenshot path and request click position from the Replit server
-        files = {'file': ('screenshot_path.txt', open(screenshot_path, 'rb'))}
+        files = {'file': ('screenshot_path.txt', open('/latest-screenshot/vm_screenshot.png', 'rb'))}
         response = requests.post(server_url, files=files)
 
         if response.status_code == 200:
