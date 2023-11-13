@@ -16,7 +16,7 @@ def capture_and_send_screenshot():
         # Capture screenshot using pyautogui
         screenshot = pyautogui.screenshot()
 
-        # Save the screenshot in PNG format
+        # Save the screenshot in PNG formats
         screenshot_path = '/latest-screenshot/vm_screenshot.png'
         screenshot.save(screenshot_path, format='PNG')
 
