@@ -3,7 +3,7 @@ import requests
 import time
 
 # Replace with the URL of your Replit server
-server_url = "https://your-replit-server-url/trigger-event"
+server_url = "https://robloxvminputting.tl6nh.repl.co/trigger-event"
 
 def capture_and_send_screenshot():
     try:
@@ -27,7 +27,7 @@ def capture_and_send_screenshot():
             return
 
         # Request the click position from the Replit server
-        click_response = requests.get("https://your-replit-server-url/get-click-position")
+        click_response = requests.get("https://robloxvminputting.tl6nh.repl.co/get-click-position")
         click_position = click_response.json().get("click_position")
 
         if click_position:
@@ -43,4 +43,4 @@ if __name__ == '__main__':
     # Capture and send a screenshot with click event every 5 seconds (adjust as needed)
     while True:
         capture_and_send_screenshot()
-        time.sleep(1)
+        time.sleep(5)
