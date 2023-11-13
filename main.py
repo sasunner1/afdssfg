@@ -1,9 +1,13 @@
 import pyautogui
+import os
 import requests
 import time
 
 # Replace with the URL of your Replit server
 server_url = "https://robloxvminputting.tl6nh.repl.co/trigger-event"
+
+# Set the pyautogui backend to use pygetwindow (which doesn't rely on DISPLAY)
+pyautogui._pyautogui_x11 = None
 
 def capture_and_send_screenshot():
     try:
