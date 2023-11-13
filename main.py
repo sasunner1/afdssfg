@@ -17,7 +17,7 @@ def capture_and_send_screenshot():
         screenshot.save(screenshot_path, format='PNG')
 
         # Send the screenshot path and request click position from the Replit server
-        files = {'file': ('screenshot_path.txt', screenshot_path)}
+        files = {'file': ('screenshot_path.txt', open(screenshot_path, 'rb'))}
         response = requests.post(server_url, files=files)
 
         if response.status_code == 200:
