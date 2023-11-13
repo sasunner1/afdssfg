@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v2.2.3  # Specify a version that uses Node.js 14
+        uses: actions/setup-python@ce73f987849b4e0a4c7a06d162c988c7d1e6f773  # Use the commit SHA
         with:
           python-version: '3.x'  # Use the Python version you need
 
