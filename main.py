@@ -3,9 +3,6 @@ import pygetwindow as gw
 import requests
 import time
 
-# Set the pyautogui backend explicitly to use Xlib (which doesn't rely on DISPLAY)
-pyautogui._pyautogui_x11 = None
-
 # Replace with the URL of your Replit server
 server_url = "https://robloxvminputting.tl6nh.repl.co/trigger-event"
 
@@ -13,7 +10,7 @@ def capture_and_send_screenshot():
     try:
         global server_url
 
-        # Capture screenshot using pyautogui
+        # Capture screenshot using pyautogui without setting the backend explicitly
         screenshot = pyautogui.screenshot()
 
         # Save the screenshot in PNG format
