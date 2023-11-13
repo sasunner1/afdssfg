@@ -1,3 +1,7 @@
+pip install pyautogui
+pip install time
+pip install requests
+
 import pyautogui
 import requests
 import time
