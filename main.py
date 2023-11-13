@@ -1,4 +1,3 @@
-import pyautogui
 import pygetwindow as gw
 import requests
 import time
@@ -10,13 +9,15 @@ def capture_and_send_screenshot():
     try:
         global server_url
 
-        # Capture screenshot using pyautogui without setting the backend explicitly
-        screenshot = pyautogui.screenshot()
+        # Get the active window
+        window = gw.getWindowsWithTitle("")[0]
+
+        # Capture screenshot using pygetwindow
+        screenshot = window.screenshot()
 
         # Save the screenshot in PNG format
         screenshot_path = '/latest-screenshot/vm_screenshot.png'
-        with open(screenshot_path, 'wb') as f:
-            screenshot.save(f, format='PNG')
+        screenshot.save(screenshot_path, format='PNG')
 
         # Send the screenshot path and request click position from the Replit server
         files = {'file': ('screenshot_path.txt', open(screenshot_path, 'rb'))}
@@ -41,7 +42,7 @@ def capture_and_send_screenshot():
         print("Error:", str(e))
 
 if __name__ == '__main__':
-    # Capture and send a screenshot with a click event every 5 seconds (adjust as needed)
+    # Capture and send a screenshot with click event every 5 seconds (adjust as needed)
     while True:
         capture_and_send_screenshot()
         time.sleep(5)
